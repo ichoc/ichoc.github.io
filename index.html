@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +50,46 @@
             height: 100%;
             border: none;
         }
+        /* 浮层容器样式 */
+        .floating-board {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 130px;
+            background: rgba(26, 26, 46, 0.9); /* 深色半透明背景 */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px;
+            z-index: 100;
+            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+            color: #e0e0e0;
+            text-align: center;
+            font-size: 13px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* 访客计数样式 */
+        .visitor-count {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        
+        /* 二维码图片样式 */
+        .qr-code {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-top: 8px;
+            filter: brightness(0.9); /* 稍微降低亮度适配暗色模式 */
+        }
+        
+        /* 分割线 */
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 8px 0;
+        }
     </style>
 </head>
 <body>
@@ -62,5 +103,13 @@
             allowfullscreen
             onload="document.getElementById('loading').style.display = 'none';">
     </iframe>
+    <div class="floating-board">
+    <div class="visitor-count">
+        访客: <span id="busuanzi_value_site_pv">...</span>
+    </div>
+    <div class="divider"></div>
+    <div style="font-size: 11px; opacity: 0.8;">扫码留言</div>
+    <img src="qrcode.jpg" alt="留言二维码" class="qr-code">
+    </div>
 </body>
 </html>
